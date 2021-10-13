@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4725b39a-e055-4232-b167-a588fe145406" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/clase4Minotti.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" afterDir="false" />
     </list>
@@ -39,7 +37,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633470823399</updated>
-      <workItem from="1633470828859" duration="4342000" />
+      <workItem from="1633470828859" duration="4886000" />
+      <workItem from="1634151081649" duration="774000" />
     </task>
     <servers />
   </component>

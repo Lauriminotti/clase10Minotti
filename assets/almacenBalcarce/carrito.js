@@ -71,6 +71,8 @@ const snaksDos = new Producto("Combo Snaks variado", "assets/img/promoSnakUno.jp
 const fernet = new Producto("Combo de Fernet más Coca-Cola", "assets/img/promoFernet.jpg", 950, 45);
 const sorrentinos = new Producto("Sorrentinos caseros por 12 u.", "assets/img/promoSorrentinosUno.jpg", 300, 15);
 
+
+/*
 console.log(snaks);
 console.log("Precio con descuento: $" + snaks.getPrecioDescuento());
 console.log(vinos);
@@ -83,7 +85,17 @@ console.log(fernet);
 console.log("Precio con descuento: $" + fernet.getPrecioDescuento());
 console.log(sorrentinos);
 console.log("Precio con descuento: $" + sorrentinos.getPrecioDescuento());
+*/
 
+let productos = [];
+productos.push(snaks);
+productos.push(vinos);
+productos.push(pollo);
+productos.push(snaksDos);
+productos.push(fernet);
+productos.push(sorrentinos);
+
+console.log("En total hay: " + productos.length);
 
 class Cliente {
     constructor(nombre, telefono, direccion) {
