@@ -111,3 +111,29 @@ class Cliente {
 
 const esteban = new Cliente("Esteban Lazzaroni", "3498415203", "Figueredo 2515");
 console.log(esteban.saludar());
+
+
+function ordenarPorPropiedad(array, propiedad) {
+    return array.sort(function(a, b) {
+        var x = a[propiedad];
+        var y = b[propiedad];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+console.log("Ahora voy a imprimir por los productos por precio:");
+const productosOrdenadosPorPrecio= ordenarPorPropiedad(productos, "precio");
+for (var i = 0; i < productosOrdenadosPorPrecio.length; i++) {
+    console.log(productosOrdenadosPorPrecio[i].nombre + ": $ " + productosOrdenadosPorPrecio[i].precio);
+}
+
+console.log("Ahora voy a imprimir los productos ordenados por nombre:");
+const productosOrdenadosPorNombre= ordenarPorPropiedad(productos, "nombre");
+for (var i = 0; i < productosOrdenadosPorNombre.length; i++) {
+    console.log(productosOrdenadosPorNombre[i].nombre + ": $ " + productosOrdenadosPorNombre[i].precio);
+}
+
+console.log("Ahora voy a imprimir todos los productos ordenados por descuentos:");
+const productosOrdenadosPorDescuento= ordenarPorPropiedad(productos, "descuento");
+for (var i = 0; i < productosOrdenadosPorDescuento.length; i++) {
+    console.log(productosOrdenadosPorDescuento[i].nombre + ":  " + productosOrdenadosPorDescuento[i].descuento + "%");
+}
