@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4725b39a-e055-4232-b167-a588fe145406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/almacenBalcarce/ejemplo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/almacenBalcarce/utilidades.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/almacenBalcarce/producto.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/almacenBalcarce/utilidades.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/almacenBalcarce/utilidades.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,6 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -56,6 +59,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maria\Desktop\CoderHouse\JS\clase8Minotti\assets\almacenBalcarce" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -70,6 +78,8 @@
       <workItem from="1634915356156" duration="1319000" />
       <workItem from="1634992717849" duration="93000" />
       <workItem from="1635190433564" duration="6341000" />
+      <workItem from="1635427356732" duration="1345000" />
+      <workItem from="1635509184595" duration="7653000" />
     </task>
     <servers />
   </component>
@@ -86,11 +96,32 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="460" y="118" key="FileChooserDialogImpl" timestamp="1634992813747">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="460" y="118" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1634992813747" />
+    <state width="1339" height="158" key="GridCell.Tab.0.bottom" timestamp="1635513945182">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="158" key="GridCell.Tab.0.bottom/0.0.1360.728@0.0.1360.728" timestamp="1635513945182" />
+    <state width="1339" height="158" key="GridCell.Tab.0.center" timestamp="1635513945181">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="158" key="GridCell.Tab.0.center/0.0.1360.728@0.0.1360.728" timestamp="1635513945181" />
+    <state width="1339" height="158" key="GridCell.Tab.0.left" timestamp="1635513945181">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="158" key="GridCell.Tab.0.left/0.0.1360.728@0.0.1360.728" timestamp="1635513945181" />
+    <state width="1339" height="158" key="GridCell.Tab.0.right" timestamp="1635513945182">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="158" key="GridCell.Tab.0.right/0.0.1360.728@0.0.1360.728" timestamp="1635513945182" />
+    <state x="387" y="97" width="585" height="534" key="find.popup" timestamp="1635513398257">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="387" y="97" width="585" height="534" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1635513398257" />
   </component>
 </project>

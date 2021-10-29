@@ -1,3 +1,6 @@
+/*definimos la variable global*/
+var PRODUCTOHTML;
+var productos;
 /* Esto se va  a ver al ingresar a la página*/
 
 function ingreso() {
@@ -51,7 +54,8 @@ function validarWhatsApp(nombre, direccion) {
 /*objetos*/
 
 class Producto {
-    constructor(nombre, imagen, precio, descuento) {
+    constructor(id, nombre, imagen, precio, descuento) {
+        this.id= id;
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
@@ -61,15 +65,18 @@ class Producto {
     getPrecioDescuento() {
         return (this.precio - this.precio * this.descuento / 100);
     }
+    convertirAtexto(){
+        return convertirObjetoATexto(this);
+    }
 
 }
 
-const snaks = new Producto("Combo Snaks saludables", "assets/img/promoSnakSaludable.jpg", 850, 20);
-const vinos = new Producto("Set de 5 Vinos", "assets/img/promoVinoUno.jpg", 2200, 40);
-const pollo = new Producto("Pollo a las brasas más porción de papas fritas", "assets/img/promoPolloPapas.png", 1000, 15);
-const snaksDos = new Producto("Combo Snaks variado", "assets/img/promoSnakUno.jpg", 1450, 20);
-const fernet = new Producto("Combo de Fernet más Coca-Cola", "assets/img/promoFernet.jpg", 950, 45);
-const sorrentinos = new Producto("Sorrentinos caseros por 12 u.", "assets/img/promoSorrentinosUno.jpg", 300, 15);
+const snaks = new Producto(1,"Combo Snaks saludables", "assets/img/promoSnakSaludable.jpg", 850, 20);
+const vinos = new Producto(2, "Set de 5 Vinos", "assets/img/promoVinoUno.jpg", 2200, 40);
+const pollo = new Producto(3, "Pollo a las brasas más porción de papas fritas", "assets/img/promoPolloPapas.png", 1000, 15);
+const snaksDos = new Producto(4, "Combo Snaks variado", "assets/img/promoSnakUno.jpg", 1450, 20);
+const fernet = new Producto(5, "Combo de Fernet más Coca-Cola", "assets/img/promoFernet.jpg", 950, 45);
+const sorrentinos = new Producto(6, "Sorrentinos caseros por 12 u.", "assets/img/promoSorrentinosUno.jpg", 300, 15);
 
 
 /*
@@ -87,7 +94,7 @@ console.log(sorrentinos);
 console.log("Precio con descuento: $" + sorrentinos.getPrecioDescuento());
 */
 
-let productos = [];
+productos = [];
 productos.push(snaks);
 productos.push(vinos);
 productos.push(pollo);
@@ -136,4 +143,112 @@ console.log("Ahora voy a imprimir todos los productos ordenados por descuentos:"
 const productosOrdenadosPorDescuento= ordenarPorPropiedad(productos, "descuento");
 for (var i = 0; i < productosOrdenadosPorDescuento.length; i++) {
     console.log(productosOrdenadosPorDescuento[i].nombre + ":  " + productosOrdenadosPorDescuento[i].descuento + "%");
+}
+
+/* Agregar productos al carrito
+
+let botonCompra = document.querySelectorAll(".botonCompra");
+let carrito = [];
+
+console.log( botonCompra);
+
+for(let boton    of botonCompra ){
+
+    boton.addEventListener("click" , agregarCarrito )
+
+
+}
+
+
+function agregarCarrito(e){
+
+    let hijo = e.target;
+    let padre = hijo.parentNode;
+
+    let nombreProducto = padre.querySelector("h5").textContent;
+    let img = padre.querySelector("img").src;
+    let precio = padre.querySelector("span").textContent;
+    let parrafo = padre.querySelector("p").textContent;
+
+
+    const producto = {
+
+        nombre: nombreProducto,
+        img: img,
+        precio: precio,
+        desc: parrafo,
+        cantidad: 1
+    }
+
+
+    carrito.push(producto);
+    mostrarCarrito( producto);
+}
+
+
+
+
+function mostrarCarrito( producto){
+
+    let fila = document.createElement("tr");
+
+    fila.innerHTML = `<td><img src="${producto.img} "></td>
+                      <td>${producto.nombre}</td>
+                      <td>${producto.cantidad}</td>
+                      <td><button class="btn btn-danger">Eliminar</button></td>
+                    `
+
+    let tbody = document.getElementById("tbody");
+
+    tbody.appendChild( fila );
+
+
+
+
+}
+
+console.log( carrito );
+
+ */
+console.log(snaks.convertirAtexto());
+
+/* Agregar todos los productos al HTML de forma dinamica*/
+
+function mostrarProductos(){
+    for (let i=0; i< productos.length; i ++){
+        var promociones = document.getElementById("productos");
+        var temporal= PRODUCTOHTML.replace("_NOMBRE_", productos[i].nombre);
+        temporal= temporal.replace("_IMAGEN_", productos[i].imagen);
+        temporal= temporal.replace("_PORCENTAJE_DESCUENTO_", productos[i].descuento);
+        temporal= temporal.replace("_PRECIO_", productos[i].precio);
+        temporal= temporal.replace("_PRECIO_DESCUENTO_", productos[i].getPrecioDescuento());
+        temporal= temporal.replace("_PRODUCTO_COMPLETO_", productos[i].convertirAtexto());
+        temporal= temporal.replace("_ID_", productos[i].id)
+        promociones.innerHTML= promociones.innerHTML + temporal;
+    }
+    console.log(productos.length);
+}
+/* lo que hace es leer el HTML del prodcuto  creado y lo retorna. la variable ALLTEXT es lo que nos duevuelve el archivo*/
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                PRODUCTOHTML = rawFile.responseText;
+                mostrarProductos();
+            }
+        }
+    }
+    rawFile.send(null);
+}
+readTextFile("assets/almacenBalcarce/producto.html");
+
+function agregarAlCarrito(elemento){
+    let producto= document.getElementById(elemento).getElementsByTagName("input")[0].value;
+    console.log(producto);
 }

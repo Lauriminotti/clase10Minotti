@@ -1,28 +1,8 @@
 function convertirObjetoATexto(obj){
     return JSON.stringify(obj);
 }
-/*
-const ejjson = {
-    "nombre": "lauri",
-    "edad": 28,
-    "mujer": true,
-    "celular": {
-        "marca": "Xiaomi",
-        "modelo": "MiA3"
-    },
-    "perros": ["ruddy", "Loli", "Rodo"],
-    "idiomas": [
-        {
-            "idioma": "ingles",
-            "nivel": "intermedio"
-        },
-        {
-            "idioma": "frances",
-            "nivel": "basico"
-        }
-    ]
-};
- */
+
+/* Tres funciones guardar, leer y eliminar*/
 
 function guardarStorage(clave, valor){
     localStorage.setItem(clave, valor);
