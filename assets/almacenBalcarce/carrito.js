@@ -1,6 +1,9 @@
 /*definimos la variable global*/
 var PRODUCTOHTML;
 var productos;
+var CARRITO;
+var PRODUCTOCARRITO;
+
 /* Esto se va  a ver al ingresar a la página*/
 
 function ingreso() {
@@ -16,7 +19,7 @@ function ingreso() {
     }
 }
 
-ingreso();
+/*ingreso();*/
 
 /*Funciones en el carrito*/
 function validarDatos() {
@@ -55,7 +58,7 @@ function validarWhatsApp(nombre, direccion) {
 
 class Producto {
     constructor(id, nombre, imagen, precio, descuento) {
-        this.id= id;
+        this.id = id;
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
@@ -65,13 +68,19 @@ class Producto {
     getPrecioDescuento() {
         return (this.precio - this.precio * this.descuento / 100);
     }
-    convertirAtexto(){
+
+    convertirAtexto() {
         return convertirObjetoATexto(this);
     }
 
 }
 
-const snaks = new Producto(1,"Combo Snaks saludables", "assets/img/promoSnakSaludable.jpg", 850, 20);
+
+function getPrecioDescuento(precio, descuento) {
+    return (precio - precio * descuento / 100);
+}
+
+const snaks = new Producto(1, "Combo Snaks saludables", "assets/img/promoSnakSaludable.jpg", 850, 20);
 const vinos = new Producto(2, "Set de 5 Vinos", "assets/img/promoVinoUno.jpg", 2200, 40);
 const pollo = new Producto(3, "Pollo a las brasas más porción de papas fritas", "assets/img/promoPolloPapas.png", 1000, 15);
 const snaksDos = new Producto(4, "Combo Snaks variado", "assets/img/promoSnakUno.jpg", 1450, 20);
@@ -121,50 +130,47 @@ console.log(esteban.saludar());
 
 
 function ordenarPorPropiedad(array, propiedad) {
-    return array.sort(function(a, b) {
+    return array.sort(function (a, b) {
         var x = a[propiedad];
         var y = b[propiedad];
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 }
+
 console.log("Ahora voy a imprimir por los productos por precio:");
-const productosOrdenadosPorPrecio= ordenarPorPropiedad(productos, "precio");
+const productosOrdenadosPorPrecio = ordenarPorPropiedad(productos, "precio");
 for (var i = 0; i < productosOrdenadosPorPrecio.length; i++) {
     console.log(productosOrdenadosPorPrecio[i].nombre + ": $ " + productosOrdenadosPorPrecio[i].precio);
 }
 
 console.log("Ahora voy a imprimir los productos ordenados por nombre:");
-const productosOrdenadosPorNombre= ordenarPorPropiedad(productos, "nombre");
+const productosOrdenadosPorNombre = ordenarPorPropiedad(productos, "nombre");
 for (var i = 0; i < productosOrdenadosPorNombre.length; i++) {
     console.log(productosOrdenadosPorNombre[i].nombre + ": $ " + productosOrdenadosPorNombre[i].precio);
 }
 
 console.log("Ahora voy a imprimir todos los productos ordenados por descuentos:");
-const productosOrdenadosPorDescuento= ordenarPorPropiedad(productos, "descuento");
+const productosOrdenadosPorDescuento = ordenarPorPropiedad(productos, "descuento");
 for (var i = 0; i < productosOrdenadosPorDescuento.length; i++) {
     console.log(productosOrdenadosPorDescuento[i].nombre + ":  " + productosOrdenadosPorDescuento[i].descuento + "%");
 }
 
-/* Agregar productos al carrito
+/* Agregar productos al carrito*/
+function eventoBotonCompra() {
+    let botonCompra = document.querySelectorAll(".botonCompra");
+    for (let boton of botonCompra) {
 
-let botonCompra = document.querySelectorAll(".botonCompra");
-let carrito = [];
-
-console.log( botonCompra);
-
-for(let boton    of botonCompra ){
-
-    boton.addEventListener("click" , agregarCarrito )
-
-
+        boton.addEventListener("click", agregarCarrito)
+    }
 }
 
+let carrito = [];
 
-function agregarCarrito(e){
+
+function agregarCarrito(e) {
 
     let hijo = e.target;
     let padre = hijo.parentNode;
-
     let nombreProducto = padre.querySelector("h5").textContent;
     let img = padre.querySelector("img").src;
     let precio = padre.querySelector("span").textContent;
@@ -182,73 +188,151 @@ function agregarCarrito(e){
 
 
     carrito.push(producto);
-    mostrarCarrito( producto);
+    mostrarCarrito(producto);
 }
 
+function mostrarCarrito() {
+    var pc= CARRITO.productos ;
+    var promociones = document.getElementById("listadoDeProductos");
+    promociones.innerHTML = "";
 
-
-
-function mostrarCarrito( producto){
-
-    let fila = document.createElement("tr");
-
-    fila.innerHTML = `<td><img src="${producto.img} "></td>
-                      <td>${producto.nombre}</td>
-                      <td>${producto.cantidad}</td>
-                      <td><button class="btn btn-danger">Eliminar</button></td>
-                    `
-
-    let tbody = document.getElementById("tbody");
-
-    tbody.appendChild( fila );
-
-
-
-
+    for (let i = 0; i < pc.length; i++) {
+        var temporal = PRODUCTOCARRITO.replace("_NOMBRE_", pc[i].producto.nombre);
+        temporal = temporal.replace("_IMAGEN_", pc[i].producto.imagen);
+        temporal = temporal.replace("_NOMBRE2_", pc[i].producto.nombre);
+        temporal = temporal.replace("_PRECIO_DESCUENTO_", getPrecioDescuento(pc[i].producto.precio,pc[i].producto.descuento));
+        promociones.innerHTML = promociones.innerHTML + temporal;
+    }
+    calcularTotal();
 }
 
-console.log( carrito );
+class ProductoCarrito {
+    constructor(producto, cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+}
 
- */
+class Carrito {
+    constructor(cliente, productos, obj) {
+        this.cliente = cliente;
+        this.productos = productos;
+
+        if(obj){
+            obj && Object.assign(this, obj)
+        }
+    }
+
+
+    agregarProducto(producto, cantidad) {
+        this.productos.push(new ProductoCarrito(producto, cantidad));
+        guardarStorage("CARRITO", this);
+    }
+
+
+    calcularTotal() {
+        var total = 0;
+        for (var i = 0; i < this.productos.length; i++) {
+            total = total + (this.productos[i].cantidad * this.productos[i].producto.precio);
+        }
+        return total;
+    }
+}
+
+/* Tenes el carrito y si no existe lo guardamos en el storange al nuevo carrito*/
+function iniciarCarrito() {
+    const carrito = leerStorage("CARRITO");
+    if (!carrito) {
+        CARRITO = new Carrito(null, [], null);
+        guardarStorage("CARRITO", CARRITO);
+    } else {
+        CARRITO = new Carrito(null, null, carrito);
+    }
+}
+
+iniciarCarrito();
+
+
+console.log(carrito);
+
+
 console.log(snaks.convertirAtexto());
 
-/* Agregar todos los productos al HTML de forma dinamica*/
+function mostrarPedido(){
 
-function mostrarProductos(){
-    for (let i=0; i< productos.length; i ++){
+}
+
+/* Agregar todos los productos al HTML de forma dinamica*/
+function mostrarProductosIndex(){
+    mostrarProductos();
+    eventoBotonCompra();
+}
+
+function mostrarProductos() {
+    for (let i = 0; i < productos.length; i++) {
         var promociones = document.getElementById("productos");
-        var temporal= PRODUCTOHTML.replace("_NOMBRE_", productos[i].nombre);
-        temporal= temporal.replace("_IMAGEN_", productos[i].imagen);
-        temporal= temporal.replace("_PORCENTAJE_DESCUENTO_", productos[i].descuento);
-        temporal= temporal.replace("_PRECIO_", productos[i].precio);
-        temporal= temporal.replace("_PRECIO_DESCUENTO_", productos[i].getPrecioDescuento());
-        temporal= temporal.replace("_PRODUCTO_COMPLETO_", productos[i].convertirAtexto());
-        temporal= temporal.replace("_ID_", productos[i].id)
-        promociones.innerHTML= promociones.innerHTML + temporal;
+        var temporal = PRODUCTOHTML.replace("_NOMBRE_", productos[i].nombre);
+        temporal = temporal.replace("_IMAGEN_", productos[i].imagen);
+        temporal = temporal.replace("_PORCENTAJE_DESCUENTO_", productos[i].descuento);
+        temporal = temporal.replace("_PRECIO_", productos[i].precio);
+        temporal = temporal.replace("_PRECIO_DESCUENTO_", productos[i].getPrecioDescuento());
+        temporal = temporal.replace("_PRODUCTO_COMPLETO_", productos[i].convertirAtexto());
+        temporal = temporal.replace("_ID_", productos[i].id)
+        promociones.innerHTML = promociones.innerHTML + temporal;
     }
     console.log(productos.length);
 }
+
 /* lo que hace es leer el HTML del prodcuto  creado y lo retorna. la variable ALLTEXT es lo que nos duevuelve el archivo*/
-function readTextFile(file)
-{
+function readTextFile(file, callback, esParaCarrito) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                PRODUCTOHTML = rawFile.responseText;
-                mostrarProductos();
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                if(esParaCarrito){
+                    PRODUCTOCARRITO = rawFile.responseText;
+                } else {
+                    PRODUCTOHTML = rawFile.responseText;
+                }
+                callback && callback();
             }
         }
     }
     rawFile.send(null);
 }
-readTextFile("assets/almacenBalcarce/producto.html");
 
-function agregarAlCarrito(elemento){
-    let producto= document.getElementById(elemento).getElementsByTagName("input")[0].value;
+
+
+readTextFile("assets/almacenBalcarce/producto.html", mostrarProductosIndex, false);
+
+function agregarAlCarrito(elemento) {
+    let producto = document.getElementById(elemento).getElementsByTagName("input")[0].value;
     console.log(producto);
+    CARRITO.agregarProducto(convertirTextoAobjetos(producto), 1);
+    readTextFile("assets/almacenBalcarce/carritoProducto.html", mostrarCarrito, true);
+
+}
+
+readTextFile("assets/almacenBalcarce/carritoProducto.html", mostrarCarrito, true);
+
+function calcularTotal(){
+    var total= 0;
+    var pc= CARRITO.productos ;
+
+    for( var i=0; i< pc.length; i++){
+        total= total + getPrecioDescuento(pc[i].producto.precio,pc[i].producto.descuento);
+    }
+    console.log(total);
+    var total1 = document.getElementById("miniCarrito");
+    var total2 = document.getElementById("subTotal");
+
+    total1.innerHTML= "$"+total;
+    total2.innerHTML= "$"+total;
+
+}
+function borrarCarrito(){
+    CARRITO.productos= [];
+    guardarStorage("CARRITO", CARRITO);
+    mostrarCarrito();
 }

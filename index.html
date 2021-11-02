@@ -84,7 +84,7 @@
                                         <a href="#miniCart" class="minicart-btn toolbar-btn">
                                             <div class="minicart-count_area">
                                                 <i class="zmdi zmdi-mall"></i>
-                                                <p class="total-price">$420 <span>(10)</span></p>
+                                                <p class="total-price" id="miniCarrito"></p>
                                             </div>
                                         </a>
                                     </li>
@@ -102,48 +102,18 @@
                 <a href="#" class="btn-close"><i class="zmdi zmdi-close"></i></a>
                 <div class="minicart-content">
                     <div class="minicart-heading">
+                        <button onclick="borrarCarrito()">ELIMINAR CARRITO</button>
+                    </div>
+                    <div class="minicart-heading">
                         <h4>CARRITO DE COMPRAS</h4>
                     </div>
-                    <ul class="minicart-list">
-                        <li class="minicart-product">
-                            <a class="product-item_remove" href="javascript:void(0)"><i
-                                    class="zmdi zmdi-close"></i></a>
-                            <div class="product-item_img">
-                                <img src="assets/images/product/small-size/1.jpg" alt="Quicky's Product Image">
-                            </div>
-                            <div class="product-item_content">
-                                <a class="product-item_title" href="shop-left-sidebar.html">Autem ipsa ad</a>
-                                <span class="product-item_quantity">1 x $145.80</span>
-                            </div>
-                        </li>
-                        <li class="minicart-product">
-                            <a class="product-item_remove" href="javascript:void(0)"><i
-                                    class="zmdi zmdi-close"></i></a>
-                            <div class="product-item_img">
-                                <img src="assets/images/product/small-size/2.jpg" alt="Quicky's Product Image">
-                            </div>
-                            <div class="product-item_content">
-                                <a class="product-item_title" href="shop-left-sidebar.html">Tenetur illum
-                                    amet</a>
-                                <span class="product-item_quantity">1 x $150.80</span>
-                            </div>
-                        </li>
-                        <li class="minicart-product">
-                            <a class="product-item_remove" href="javascript:void(0)"><i
-                                    class="zmdi zmdi-close"></i></a>
-                            <div class="product-item_img">
-                                <img src="assets/images/product/small-size/3.jpg" alt="Quicky's Product Image">
-                            </div>
-                            <div class="product-item_content">
-                                <a class="product-item_title" href="shop-left-sidebar.html">Non doloremque</a>
-                                <span class="product-item_quantity">1 x $165.80</span>
-                            </div>
-                        </li>
+                    <ul class="minicart-list" id="listadoDeProductos">
+
                     </ul>
                 </div>
                 <div class="minicart-item_total">
                     <span>Subtotal</span>
-                    <span class="ammount">$462.4‬0</span>
+                    <span class="ammount" id="subTotal"></span>
                 </div>
                 <div class="form-group">
                     <label>Nombre y Apellido <span class="required">*</span></label>

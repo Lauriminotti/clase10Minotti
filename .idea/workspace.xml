@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4725b39a-e055-4232-b167-a588fe145406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/almacenBalcarce/producto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/almacenBalcarce/carritoProducto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/almacenBalcarce/carrito.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/almacenBalcarce/utilidades.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/almacenBalcarce/utilidades.js" afterDir="false" />
@@ -43,6 +44,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1z6a6RLtfxic45es0eEhbrPaylO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -79,7 +81,9 @@
       <workItem from="1634992717849" duration="93000" />
       <workItem from="1635190433564" duration="6341000" />
       <workItem from="1635427356732" duration="1345000" />
-      <workItem from="1635509184595" duration="7653000" />
+      <workItem from="1635509184595" duration="7834000" />
+      <workItem from="1635766889244" duration="9185000" />
+      <workItem from="1635874868039" duration="2856000" />
     </task>
     <servers />
   </component>
@@ -119,9 +123,21 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state width="1339" height="158" key="GridCell.Tab.0.right/0.0.1360.728@0.0.1360.728" timestamp="1635513945182" />
+    <state x="401" y="105" width="552" height="524" key="StructurePopup" timestamp="1635774601454">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="401" y="105" width="552" height="524" key="StructurePopup/0.0.1360.728@0.0.1360.728" timestamp="1635774601454" />
     <state x="387" y="97" width="585" height="534" key="find.popup" timestamp="1635513398257">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="387" y="97" width="585" height="534" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1635513398257" />
+    <state x="336" y="162" key="run.anything.popup" timestamp="1635774376018">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="336" y="162" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1635774376018" />
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1635772017218">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1635772017218" />
   </component>
 </project>
