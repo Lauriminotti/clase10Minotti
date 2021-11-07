@@ -10,16 +10,17 @@ function ingreso() {
     let ubicacion = prompt("¿Sos de San Justo? SI / NO");
 
     if (ubicacion !== "SI") {
-        alert("Solo hacemos envíos en San Justo");
+        $("#productoOferta").hide();
         return;
     }
+    $("#loSentimos").hide();
     let edad = parseInt(prompt("Ingresa tu edad"));
     if (edad < 18) {
         alert("No podrás comprar bebidas alcoholicas");
     }
 }
 
-/*ingreso();*/
+ingreso();
 
 /*Funciones en el carrito*/
 function validarDatos() {
@@ -155,41 +156,6 @@ for (var i = 0; i < productosOrdenadosPorDescuento.length; i++) {
     console.log(productosOrdenadosPorDescuento[i].nombre + ":  " + productosOrdenadosPorDescuento[i].descuento + "%");
 }
 
-/* Agregar productos al carrito*/
-function eventoBotonCompra() {
-    let botonCompra = document.querySelectorAll(".botonCompra");
-    for (let boton of botonCompra) {
-
-        boton.addEventListener("click", agregarCarrito)
-    }
-}
-
-let carrito = [];
-
-
-function agregarCarrito(e) {
-
-    let hijo = e.target;
-    let padre = hijo.parentNode;
-    let nombreProducto = padre.querySelector("h5").textContent;
-    let img = padre.querySelector("img").src;
-    let precio = padre.querySelector("span").textContent;
-    let parrafo = padre.querySelector("p").textContent;
-
-
-    const producto = {
-
-        nombre: nombreProducto,
-        img: img,
-        precio: precio,
-        desc: parrafo,
-        cantidad: 1
-    }
-
-
-    carrito.push(producto);
-    mostrarCarrito(producto);
-}
 
 function mostrarCarrito() {
     var pc= CARRITO.productos ;
@@ -253,19 +219,13 @@ function iniciarCarrito() {
 iniciarCarrito();
 
 
-console.log(carrito);
 
 
 console.log(snaks.convertirAtexto());
 
-function mostrarPedido(){
-
-}
-
 /* Agregar todos los productos al HTML de forma dinamica*/
 function mostrarProductosIndex(){
     mostrarProductos();
-    eventoBotonCompra();
 }
 
 function mostrarProductos() {
@@ -336,3 +296,18 @@ function borrarCarrito(){
     guardarStorage("CARRITO", CARRITO);
     mostrarCarrito();
 }
+
+function fechaDeOferta(){
+
+    var formattedDate = new Date();
+    formattedDate.setDate(formattedDate.getDate() + 15);
+
+    var d = formattedDate.getDate();
+    var m =  formattedDate.getMonth();
+    m += 1;  // JavaScript months are 0-11
+    var y = formattedDate.getFullYear();
+
+    let textoOferta= "Productos hasta agotar stock. Prociones validas hasta: " + d + "/" + m + "/" + y;
+    $("#fechaDeOferta").html(textoOferta);
+}
+fechaDeOferta();
